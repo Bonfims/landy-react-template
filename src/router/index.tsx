@@ -17,7 +17,7 @@ const Router = () => {
               key={routeItem.component}
               path={routeItem.path}
               exact={routeItem.exact}
-              component={lazy(() => import(`../pages/${routeItem.component}`))}
+              component={lazy(() => import(`../pages/${routeItem.component}/index.tsx`))}
             />
           );
         })}
