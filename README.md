@@ -12,6 +12,9 @@
 
 This React template comes with multi-lingual support, smooth animations, set of ready to use sections and most importantly, all of the content is stored in the JSON files, so that you can manage the texts without having any prior knowledge in React.js.
 
+## Additional Content
+This template was changed to get content from Cockpit CMS.
+
 ## Table of contents
 
 - [Features](#features)
