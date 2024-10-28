@@ -1,6 +1,22 @@
 import { createGlobalStyle } from "styled-components";
+import { generate } from "@ant-design/colors";
 
-export const Styles = createGlobalStyle`
+interface ThemeColors {
+    primaryPalette: Array<string>;
+    secondaryPalette: Array<string>;
+    inputBackground?: string;
+}
+
+// Função para gerar a paleta de cores 
+export const generateColorPalette = (baseColor: string): Array<string> => {
+    const colors = generate(baseColor);
+    return colors;
+};
+
+const primaryPalette = generateColorPalette("#2e186a");
+const secondaryPalette = generateColorPalette("#ff825c");
+
+export const Styles = createGlobalStyle<ThemeColors>`
 
     @font-face {
         font-family: "Motiva Sans Light";
@@ -14,13 +30,26 @@ export const Styles = createGlobalStyle`
         font-style: normal;
     }
 
+    :root {
+        /* Variáveis da cor primária */
+        --primary-color: ${(props) => props.primaryPalette?.[5] ?? primaryPalette?.[5]};
+        --primary-color-light: ${(props) => props.primaryPalette?.[3] ?? primaryPalette?.[3]};
+        --primary-color-dark: ${(props) => props.primaryPalette?.[7] ?? primaryPalette?.[7]};
+
+        /* Variáveis da cor secundária */
+        --secondary-color: ${(props) => props.secondaryPalette?.[5] ?? secondaryPalette?.[5]};
+        --secondary-color-light: ${(props) => props.secondaryPalette?.[3] ?? secondaryPalette?.[3]};
+        --secondary-color-dark: ${(props) => props.secondaryPalette?.[7] ?? secondaryPalette?.[7]};
+
+        /* Outras variáveis */
+        --input-background: ${(props) => props.inputBackground || "#f1f2f3"};
+    }
 
     body,
     html,
     a {
         font-family: 'Motiva Sans Light', sans-serif;
     }
-
 
     body {
         margin:0;
@@ -31,15 +60,11 @@ export const Styles = createGlobalStyle`
         overflow-x: hidden;
     }
 
-    a:hover {
-        color: #18216d;
-    }
-
     input,
     textarea {
         border-radius: 4px;
         border: 0;
-        background: rgb(241, 242, 243);
+        background: var(--input-background);
         transition: all 0.3s ease-in-out;  
         outline: none;
         width: 100%;  
@@ -47,7 +72,7 @@ export const Styles = createGlobalStyle`
 
         :focus-within {
             background: none;
-            box-shadow: #2e186a 0px 0px 0px 1px;
+            box-shadow: var(--primary-color) 0px 0px 0px 1px;
         }
     }
 
@@ -58,7 +83,7 @@ export const Styles = createGlobalStyle`
     h5,
     h6 {
         font-family: 'Motiva Sans Bold', serif;
-        color: #18216d;
+        color: var(--primary-color-dark);
         font-size: 56px;
         line-height: 1.18;
 
@@ -72,7 +97,7 @@ export const Styles = createGlobalStyle`
     }
 
     p {
-        color: #18216d;
+        color: var(--primary-color-dark);
         font-size: 21px;        
         line-height: 1.41;
     }
@@ -84,10 +109,10 @@ export const Styles = createGlobalStyle`
     a {
         text-decoration: none;
         outline: none;
-        color: #2E186A;
+        color: var(--primary-color);
 
         :hover {
-            color: #2e186a;
+            color: var(--primary-color);
         }
     }
     
