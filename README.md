@@ -25,7 +25,7 @@ Below is a list of main changing on the original project:
 
 ## Special thanks
 
-[unDraw][unDraw] - Use fantastic, free and minimalist illustrations with easily changeable colors.
+[unDraw][unDraw] - Use fantastic, free and minimalist illustrations with easily changeable colors. (Not used yet)
 
 ## Usage
 

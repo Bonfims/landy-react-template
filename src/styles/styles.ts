@@ -2,10 +2,24 @@ import { createGlobalStyle } from "styled-components";
 import { generate } from "@ant-design/colors";
 
 interface ThemeColors {
-    primaryPalette: Array<string>;
-    secondaryPalette: Array<string>;
+    primaryPalette?: Array<string>;
+    secondaryPalette?: Array<string>;
     inputBackground?: string;
+    textColor?: string;
 }
+
+// Convertendo o hexadecimal para rgb para poder aplicar opacidade
+const hexToRgb = (hex : string) => {
+    // Remove o "#" do início, se presente
+    hex = hex.replace('#', '');
+  
+    // Divide a string em valores R, G e B
+    const r = parseInt(hex.substring(0, 2), 16);
+    const g = parseInt(hex.substring(2, 4), 16);
+    const b = parseInt(hex.substring(4, 6), 16);
+  
+    return `${r}, ${g}, ${b}`; // Retorna em formato "r, g, b"
+};
 
 // Função para gerar a paleta de cores 
 export const generateColorPalette = (baseColor: string): Array<string> => {
@@ -15,6 +29,8 @@ export const generateColorPalette = (baseColor: string): Array<string> => {
 
 const primaryPalette = generateColorPalette("#2e186a");
 const secondaryPalette = generateColorPalette("#ff825c");
+const inputBackground = "#f1f2f3";
+const textColor = "#18216d";
 
 export const Styles = createGlobalStyle<ThemeColors>`
 
@@ -33,6 +49,7 @@ export const Styles = createGlobalStyle<ThemeColors>`
     :root {
         /* Variáveis da cor primária */
         --primary-color: ${(props) => props.primaryPalette?.[5] ?? primaryPalette?.[5]};
+        --primary-color-light-rgb: ${(props) => hexToRgb(props.primaryPalette?.[3] ?? primaryPalette?.[3])};
         --primary-color-light: ${(props) => props.primaryPalette?.[3] ?? primaryPalette?.[3]};
         --primary-color-dark: ${(props) => props.primaryPalette?.[7] ?? primaryPalette?.[7]};
 
@@ -42,13 +59,18 @@ export const Styles = createGlobalStyle<ThemeColors>`
         --secondary-color-dark: ${(props) => props.secondaryPalette?.[7] ?? secondaryPalette?.[7]};
 
         /* Outras variáveis */
-        --input-background: ${(props) => props.inputBackground || "#f1f2f3"};
+        --input-background: ${(props) => props.inputBackground ?? inputBackground};
+        --text-color: ${(props) => props.textColor ?? textColor };
     }
 
     body,
     html,
     a {
         font-family: 'Motiva Sans Light', sans-serif;
+    }
+
+    a:hover {
+        color: var(--text-color);
     }
 
     body {
@@ -83,7 +105,7 @@ export const Styles = createGlobalStyle<ThemeColors>`
     h5,
     h6 {
         font-family: 'Motiva Sans Bold', serif;
-        color: var(--primary-color-dark);
+        color: var(--text-color);
         font-size: 56px;
         line-height: 1.18;
 
@@ -97,7 +119,7 @@ export const Styles = createGlobalStyle<ThemeColors>`
     }
 
     p {
-        color: var(--primary-color-dark);
+        color: var(--text-color);
         font-size: 21px;        
         line-height: 1.41;
     }
