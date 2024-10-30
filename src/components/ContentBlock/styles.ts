@@ -15,7 +15,7 @@ export const Content = styled("p")`
 `;
 
 export const StyledRow = styled(Row)`
-  flex-direction: ${({ direction }: { direction: string }) =>
+  flex-direction: ${({ direction }: { direction?: string }) =>
     direction === "left" ? "row" : "row-reverse"};
 `;
 

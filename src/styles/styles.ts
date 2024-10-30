@@ -27,8 +27,8 @@ export const generateColorPalette = (baseColor: string): Array<string> => {
     return colors;
 };
 
-const primaryPalette = generateColorPalette("#2e186a");
-const secondaryPalette = generateColorPalette("#ff825c");
+const primaryPalette = generateColorPalette("#ff825c");
+const secondaryPalette = generateColorPalette("#2e186a");
 const inputBackground = "#f1f2f3";
 const textColor = "#18216d";
 

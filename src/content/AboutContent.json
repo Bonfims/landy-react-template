@@ -1,4 +1,6 @@
 {
+  "id": "about",
+  "type": "content",
   "title": "Light, fast & responsive",
   "text": "This template is ready to use, so you don't need to change anything at a component level, unless you want to customize the default styling.",
   "section": [
@@ -17,5 +19,7 @@
       "content": "Styled Components gives you total control over your components.",
       "icon": "notes.svg"
     }
-  ]
+  ],
+  "icon": "graphs.svg",
+  "direction": "left"
 }

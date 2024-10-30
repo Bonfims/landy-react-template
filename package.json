@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "dependencies": {
+    "@ant-design/icons": "^5.5.1",
     "@types/react": "^17.0.68",
     "@types/react-router-dom": "^5.3.3",
     "@types/styled-components": "^5.1.28",
@@ -23,9 +24,6 @@
     "build": "vite build",
     "serve": "vite preview",
     "preview": "vite preview"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
   },
   "browserslist": {
     "production": [

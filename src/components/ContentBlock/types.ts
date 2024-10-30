@@ -8,7 +8,7 @@ export interface ContentBlockProps {
     content: string;
     icon: string;
   }[];
-  button?: (
+  button?: string | (
     | {
         title: string;
         color?: undefined;
@@ -20,5 +20,5 @@ export interface ContentBlockProps {
   )[];
   t: TFunction;
   id: string;
-  direction: "left" | "right";
+  direction?: "left" | "right";
 }
