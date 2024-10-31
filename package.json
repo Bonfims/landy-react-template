@@ -2,6 +2,7 @@
   "name": "dbonfs-landy-react-template",
   "version": "1.0.0",
   "private": true,
+  "type": "module",
   "dependencies": {
     "@ant-design/icons": "^5.5.1",
     "@types/react": "^17.0.68",

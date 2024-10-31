@@ -44,5 +44,10 @@ export default defineConfig({
                 ],
             },
         }),
-    ]
+    ],
+    server: {
+        proxy: {
+            "/management/api": "http://localhost:8080"
+        }
+    }
 });
